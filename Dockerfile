@@ -8,7 +8,6 @@ WORKDIR ${LAMBDA_TASK_ROOT}/
 RUN ls -lrt
 
 RUN pip install poetry
-RUN poetry config virtualenvs.in-project true
 RUN poetry install
 
 ARG MF_API_KEY
