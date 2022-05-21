@@ -1,7 +1,8 @@
 FROM public.ecr.aws/lambda/python:3.9
 
 # Copy function code
-COPY /* ${LAMBDA_TASK_ROOT}/
+COPY data_metrics_mf_aws ${LAMBDA_TASK_ROOT}/
+COPY pyproject.toml ${LAMBDA_TASK_ROOT}/
 
 WORKDIR ${LAMBDA_TASK_ROOT}/
 
