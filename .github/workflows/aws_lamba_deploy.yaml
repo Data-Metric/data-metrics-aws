@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ECR_IMAGE_TAG: latest
+      AWS_ECR_IMAGE_TAG: latest
       AWS_DEFAULT_REGION: us-east-1
       AWS_LAMBDA_FUNC_NAME: data-metrics-get-mf
       AWS_ECR_REPOSITORY_NAME: data-metrics-mf-aws
@@ -44,15 +44,15 @@ jobs:
             --build-arg AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" \
             --build-arg AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
             --build-arg AWS_DEFAULT_REGION="${{ env.AWS_DEFAULT_REGION }}" \
-            -t $AWS_ECR_REGISTRY/$AWS_ECR_REPOSITORY_NAME:ECR_IMAGE_TAG .
+            -t $AWS_ECR_REGISTRY/$AWS_ECR_REPOSITORY_NAME:$AWS_ECR_IMAGE_TAG .
           echo "Pushing image to ECR..."
-          docker push $AWS_ECR_REGISTRY/$AWS_ECR_REPOSITORY_NAME:ECR_IMAGE_TAG
-          echo "::set-output name=image::$AWS_ECR_REGISTRY/$AWS_ECR_REGISTRY:${{ env.ECR_IMAGE_TAG }}"
+          docker push $AWS_ECR_REGISTRY/$AWS_ECR_REPOSITORY_NAME:$AWS_ECR_IMAGE_TAG
+          echo "::set-output name=image::$AWS_ECR_REGISTRY/$AWS_ECR_REGISTRY:${{ env.AWS_ECR_IMAGE_TAG }}"
 
       - name: Deploy to AWS Lambda
         run: |
           aws lambda update-function-code \
-          --function-name ${{ env.AWS_LAMBDA_FUNC_NAME }} \
-          --image-uri "${{ secrets.AWS_ECR_IMAGE_URI }}:${{ env.ECR_IMAGE_TAG }}"
+          --function-name $AWS_LAMBDA_FUNC_NAME \
+          --image-uri $AWS_ECR_REGISTRY/$AWS_ECR_REPOSITORY_NAME:$AWS_ECR_IMAGE_TAG
 
         
