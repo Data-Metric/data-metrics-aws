@@ -1,0 +1,5 @@
+{
+	"api-url": "https://latest-mutual-fund-nav.p.rapidapi.com/fetchLatestNAV",
+	"header":"{\"X-RapidAPI-Host\": \"latest-mutual-fund-nav.p.rapidapi.com\", \"X-RapidAPI-Key\": \"{api_key}\"}",
+    "MutualFundFamily": ["Axis Mutual Fund"]
+}
