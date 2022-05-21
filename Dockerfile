@@ -5,6 +5,8 @@ COPY /* ${LAMBDA_TASK_ROOT}/
 
 WORKDIR ${LAMBDA_TASK_ROOT}/
 
+RUN ls -lrt
+
 RUN pip install poetry
 RUN poetry config virtualenvs.in-project true
 RUN poetry install
