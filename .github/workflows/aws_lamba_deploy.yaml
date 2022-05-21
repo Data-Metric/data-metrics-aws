@@ -50,6 +50,8 @@ jobs:
           echo "::set-output name=image::$AWS_ECR_REGISTRY/$AWS_ECR_REGISTRY:${{ env.AWS_ECR_IMAGE_TAG }}"
 
       - name: Deploy to AWS Lambda
+        env:
+          AWS_ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
           aws lambda update-function-code \
           --function-name $AWS_LAMBDA_FUNC_NAME \
