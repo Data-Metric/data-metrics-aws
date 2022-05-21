@@ -3,6 +3,8 @@ FROM public.ecr.aws/lambda/python:3.9
 # Copy function code
 COPY data_metric_mf_aws ${LAMBDA_TASK_ROOT}
 
+WORKDIR ${LAMBDA_TASK_ROOT}/data_metric_mf_aws
+
 RUN pip install poetry
 RUN poetry config virtualenvs.in-project true
 RUN poetry install
