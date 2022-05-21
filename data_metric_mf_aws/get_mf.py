@@ -5,10 +5,10 @@ import ast
 import os
 
 
-def handler(event, context):
+def lambda_handler(event, context):
     logger = get_logger()
     config = read_mf_config()
-    url = config["api-url"]
+    url = config[ "api-url"]
     querystring = config["MutualFundFamily"]
     api_key = os.getenv('MF_API_KEY')
     headers = ast.literal_eval(config["header"].replace("{api_key}",str(api_key)))
@@ -18,8 +18,7 @@ def handler(event, context):
     print(response.text)
 
 
-handler(None, None)
-
+lambda_handler(None,None)
 
 
 
