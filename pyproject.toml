@@ -4,9 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["AADARSH GAIKWAD <aadarshgaikwad96@gmail.com>"]
 license = "MIT"
-packages = [
-    { include = "data_metric_mf_aws" },
-]
+
 
 [tool.poetry.dependencies]
 python = "^3.9"

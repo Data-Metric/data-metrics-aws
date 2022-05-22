@@ -1,6 +1,6 @@
 import requests
 from utils.read_config import read_mf_config
-from data_metric_mf_aws.utils.logger import get_logger
+from utils.logger import get_logger
 import ast
 import os
 
@@ -18,7 +18,7 @@ def lambda_handler(event, context):
     print(response.text)
 
 
-lambda_handler(None,None)
+lambda_handler(None, None)
 
 
 
