@@ -5,26 +5,27 @@ description = ""
 authors = ["AADARSH GAIKWAD <aadarshgaikwad96@gmail.com>"]
 license = "MIT"
 
-
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<3.11"
 requests = "^2.27.1"
+pandas = "^1.4.2"
+awswrangler = "^2.15.1"
 
 [tool.poetry.dev-dependencies]
-mypy = "^0.931"
+mypy = "^0.950"
 flake8-pytest-style = "^1.6"
-nitpick = "^0.31"
+nitpick = "^0.32.0"
 safety = "^1.10"
 pytest = "^7.0"
 pytest-cov = "^3.0"
 pytest-randomly = "^3.11"
 sphinx = "^4.4"
 sphinx-autodoc-typehints = "^1.17"
-doc8 = "^0.10"
+doc8 = "^0.11.2"
 m2r2 = "^0.3"
 tomlkit = "^0.10"
 pre-commit = "^2.17.0"
-autopep8 = "1.5.0"
+autopep8 = "1.6.0"
 types-requests = "^2.27.11"
 
 [tool.black]
@@ -32,7 +33,6 @@ line-length = 120
 
 [tool.poetry.extras]
 lint = [ "pylint",]
-
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
