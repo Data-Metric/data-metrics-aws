@@ -1,7 +1,6 @@
 FROM public.ecr.aws/lambda/python:3.9
 
 # Copy function code
-RUN  mkdir ${LAMBDA_TASK_ROOT}/data_metric_mf_aws
 COPY * ${LAMBDA_TASK_ROOT}/
 # COPY pyproject.toml ${LAMBDA_TASK_ROOT}/
 
