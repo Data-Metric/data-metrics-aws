@@ -7,9 +7,10 @@ COPY * ${LAMBDA_TASK_ROOT}/
 WORKDIR ${LAMBDA_TASK_ROOT}/
 
 RUN ls -lrt
-
 RUN pip install poetry
 RUN poetry install
+
+RUN ls -lrt *
 
 ARG MF_API_KEY
 ARG AWS_ACCESS_KEY_ID
