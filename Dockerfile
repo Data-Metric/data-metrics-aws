@@ -7,9 +7,10 @@ WORKDIR ${LAMBDA_TASK_ROOT}/
 
 RUN ls -lrt
 RUN pip install poetry
+RUN poetry config virtualenvs.create false --local
 RUN poetry install
 
-RUN ls -lrt *
+RUN ls -lrta *
 
 ARG MF_API_KEY
 ARG AWS_ACCESS_KEY_ID
