@@ -29,10 +29,7 @@ def handler(event, context):
             mf_df = pd.DataFrame(response.json())
             wr.s3.to_parquet(
                 df=mf_df,
-                path=f"s3://{s3_bucket}/{mf_family}/{event_id}",
-                dataset=True,
-                database="mf_data",
-                table=f"{mf_family}"
+                path=f"s3://{s3_bucket}/{mf_family}/{event_id}"
             )
             logger.info(f"completed data ingestion for {mf_family} , event_id - {event_id}")
     except Exception as e:
