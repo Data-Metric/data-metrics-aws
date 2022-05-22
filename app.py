@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 from uuid import uuid4
 
-#import awswrangler as wr
+import awswrangler as wr
 import pandas as pd
 import requests
 
@@ -27,13 +27,13 @@ def handler(event, context):
             response = requests.get(url, headers=headers, params=mf_family)
             mf_family = mf_family.replace(" ", "-")
             mf_df = pd.DataFrame(response.json())
-            '''wr.s3.to_parquet(
+            wr.s3.to_parquet(
                 df=mf_df,
                 path=f"s3://{s3_bucket}/{mf_family}/{event_id}",
                 dataset=True,
                 database="mf_data",
                 table=f"{mf_family}"
-            )'''
+            )
             logger.info(f"completed data ingestion for {mf_family} , event_id - {event_id}")
     except Exception as e:
         logger.exception(f"event_id - {event_id}. handler() failed with exception - {e}")
