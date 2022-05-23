@@ -47,7 +47,7 @@ jobs:
             -t $AWS_ECR_REGISTRY/$AWS_ECR_REPOSITORY_NAME:$AWS_ECR_IMAGE_TAG .
           echo "Pushing image to ECR..."
           docker push $AWS_ECR_REGISTRY/$AWS_ECR_REPOSITORY_NAME:$AWS_ECR_IMAGE_TAG
-          echo "::set-output name=image::$AWS_ECR_REGISTRY/$AWS_ECR_REGISTRY:${{ env.AWS_ECR_IMAGE_TAG }}"
+          #echo "::set-output name=image::$AWS_ECR_REGISTRY/$AWS_ECR_REGISTRY:$AWS_ECR_IMAGE_TAG"
 
       - name: Deploy to AWS Lambda
         env:

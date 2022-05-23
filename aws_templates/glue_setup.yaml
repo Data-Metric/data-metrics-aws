@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: '2010-09-09'
+# Sample CloudFormation template in YAML to demonstrate creating a database, a table, and partitions
+# The metadata created in the Data Catalog points to the flights public S3 bucket
+#
+# Parameters substituted in the Resources section
+# These parameters are names of the resources created in the Data Catalog
+Parameters:
+  MFDatabaseName:
+    Type: String
+    Default: mf-db
+  MFTableName:
+    Type: String
+    Default: mf-db-data
+# Resources to create metadata in the Data Catalog
+Resources:
+###
+# Create an Amazon Glue database
+  MFDatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseInput:
+        Name: !Ref MFDatabaseName
+        Description: Database to hold tables for flights data
+###
+# Create an Amazon Glue table
+  MFTables:
+    # Creating the table waits for the database to be created
+    DependsOn: MFDatabase
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseName: !Ref MFDatabaseName
+      TableInput:
+        Name: !Ref MFTableName
+        Description: Define the first few columns of the flights table
+        TableType: EXTERNAL_TABLE
+        Parameters: {
+    "classification": "csv"
+  }
+        StorageDescriptor:
+          OutputFormat: org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
+          Columns:
+          - Name: Scheme Code
+            Type: string
+          - Name: ISIN Div Payout/ISIN Growth
+            Type: string
+          - Name: ISIN Div Reinvestment
+            Type: string
+          - Name: Scheme Name
+            Type: string
+          - Name: Net Asset Value
+            Type: string
+          - Name: Date
+            Type: string
+          - Name: Scheme Type
+            Type: string
+          - Name: Scheme Category
+            Type: string
+          - Name: Mutual Fund Family
+            Type: string
+          InputFormat: org.apache.hadoop.mapred.parquet
+          Location: s3://mf-data/Axis-Mutual-Fund/
+          SerdeInfo:
+            SerializationLibrary: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
+# Partition 1

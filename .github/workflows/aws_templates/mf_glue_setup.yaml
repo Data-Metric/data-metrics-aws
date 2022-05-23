@@ -1,0 +1,29 @@
+name: Mf AWS Setup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      AWS_DEFAULT_REGION: us-east-1
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
+
+      - name: Deploy to Glue Catalog with CloudFormation
+        id: glue-stack
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: glue_stack
+          template: aws_templates/mf_glue_setup.yaml
+          no-fail-on-empty-changeset: "1"

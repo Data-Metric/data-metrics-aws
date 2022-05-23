@@ -1,0 +1,9 @@
+Resources:
+  MyAthenaDataCatalog:
+    Type: AWS::Athena::DataCatalog
+    Properties:
+      Name: mf-data-catalog
+      Type: GLUE
+      Description: Custom Glue Catalog Description
+      Parameters:
+        catalog-id : "509795487844"

@@ -1,5 +1,5 @@
 import json
-from logger import get_logger
+from mf_aws.logger import get_logger
 
 
 def read_mf_config():
