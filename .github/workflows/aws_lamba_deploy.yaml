@@ -39,7 +39,7 @@ jobs:
         env:
           AWS_ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          cd md_aws
+          cd mf_aws
           docker build \
             --build-arg MF_API_KEY="${{ secrets.MF_API_KEY }}" \
             --build-arg AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" \
