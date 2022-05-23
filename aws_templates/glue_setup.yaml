@@ -7,10 +7,10 @@ AWSTemplateFormatVersion: '2010-09-09'
 Parameters:
   MFDatabaseName:
     Type: String
-    Default: mf-db
+    Default: mf_db
   MFTableName:
     Type: String
-    Default: mf-db-data
+    Default: mf_db_data
 # Resources to create metadata in the Data Catalog
 Resources:
 ###

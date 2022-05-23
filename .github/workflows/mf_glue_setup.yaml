@@ -24,6 +24,6 @@ jobs:
         id: glue-stack
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: GlueStack
+          name: GlueMfStack
           template: aws_templates/glue_setup.yaml
           no-fail-on-empty-changeset: "1"

@@ -7,8 +7,8 @@ import awswrangler as wr
 import pandas as pd
 import requests
 
-from logger import get_logger
-from read_config import read_mf_config
+from mf_aws.utils.logger import get_logger
+from mf_aws.utils.read_config import read_mf_config
 
 
 def handler(event, context):
