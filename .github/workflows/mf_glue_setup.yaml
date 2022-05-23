@@ -20,6 +20,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
+      - name: Print something
+        run: |
+          pwd
+          ls -lrt 
+
       - name: Deploy to Glue Catalog with CloudFormation
         id: glue-stack
         uses: aws-actions/aws-cloudformation-github-deploy@v1
