@@ -14,7 +14,7 @@ from read_config import read_mf_config
 def handler(event, context):
     logger = get_logger()
     today = date.today()
-    event_id = datetime.now().strftime('%Y%M%D%H%M%S-') + str(uuid4())
+    event_id = datetime.now().strftime('%Y%m%d%H%M%S-') + str(uuid4())
     try:
         config = read_mf_config()
         url = config["api-url"]
