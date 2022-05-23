@@ -13,7 +13,8 @@ from read_config import read_mf_config
 
 def handler(event, context):
     logger = get_logger()
-    event_id = datetime.now().strftime('%Y%m-%d%H-%M%S-') + str(uuid4())
+    today = datetime.date()
+    event_id = datetime.now().strftime('%Y%M%D%H%M%S-') + str(uuid4())
     try:
         config = read_mf_config()
         url = config["api-url"]
@@ -29,7 +30,7 @@ def handler(event, context):
             mf_df = pd.DataFrame(response.json())
             wr.s3.to_parquet(
                 df=mf_df,
-                path=f"s3://{s3_bucket}/{mf_family}/{event_id}"
+                path=f"s3://{s3_bucket}/{mf_family}/{today}/{event_id}/mf_data.parquet"
             )
             logger.info(f"completed data ingestion for {mf_family} , event_id - {event_id}")
     except Exception as e:
