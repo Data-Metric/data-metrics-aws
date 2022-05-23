@@ -1,6 +1,6 @@
 import ast
 import os
-from datetime import datetime
+from datetime import datetime,date
 from uuid import uuid4
 
 import awswrangler as wr
@@ -13,7 +13,7 @@ from read_config import read_mf_config
 
 def handler(event, context):
     logger = get_logger()
-    today = datetime.date()
+    today = date.today()
     event_id = datetime.now().strftime('%Y%M%D%H%M%S-') + str(uuid4())
     try:
         config = read_mf_config()
