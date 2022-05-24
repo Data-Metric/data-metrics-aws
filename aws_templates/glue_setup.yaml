@@ -62,4 +62,4 @@ Resources:
           InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
           Location: s3://mf-data/Axis-Mutual-Fund/
           SerdeInfo:
-            SerializationLibrary: org.apache.hadoop.hive.ql.io.srede.ParquetHiveSerDe
+            SerializationLibrary: org.apache.hadoop.hive.ql.io.serde.ParquetHiveSerDe
