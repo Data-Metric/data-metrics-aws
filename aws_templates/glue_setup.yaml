@@ -39,6 +39,7 @@ Resources:
     "classification": "csv"
   }
         StorageDescriptor:
+          OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
           Columns:
           - Name: Scheme Code
             Type: string
@@ -58,7 +59,7 @@ Resources:
             Type: string
           - Name: Mutual Fund Family
             Type: string
+          InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
           Location: s3://mf-data/Axis-Mutual-Fund/
           SerdeInfo:
             SerializationLibrary: org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
-# Partition 1
