@@ -1,5 +1,5 @@
 import json
-from logger import get_logger
+from utils.logger import get_logger
 
 
 def read_mf_config():
