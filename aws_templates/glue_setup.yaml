@@ -41,23 +41,23 @@ Resources:
         StorageDescriptor:
           OutputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
           Columns:
-          - Name: Scheme Code
+          - Name: Scheme_Code
             Type: string
-          - Name: ISIN Div Payout/ISIN Growth
+          - Name: ISIN_Div_Payout/ISIN_Growth
             Type: string
-          - Name: ISIN Div Reinvestment
+          - Name: ISIN_Div_Reinvestment
             Type: string
-          - Name: Scheme Name
+          - Name: Scheme_Name
             Type: string
-          - Name: Net Asset Value
+          - Name: Net_Asset_Value
             Type: string
           - Name: Date
             Type: string
-          - Name: Scheme Type
+          - Name: Scheme_Type
             Type: string
-          - Name: Scheme Category
+          - Name: Scheme_Category
             Type: string
-          - Name: Mutual Fund Family
+          - Name: Mutual_Fund_Family
             Type: string
           InputFormat: org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
           Location: s3://mf-data/Axis-Mutual-Fund/
